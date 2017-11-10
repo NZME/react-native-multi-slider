@@ -3,14 +3,13 @@
 var React = require('react');
 var ReactNative = require('react-native');
 var {
-  PropTypes
-} = React;
-var {
   StyleSheet,
   PanResponder,
   View,
   TouchableHighlight
 } = ReactNative;
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class'
 
 var converter = require('./converter.js');
 var mockProps = require('./mockProps.js');
@@ -44,7 +43,7 @@ var sliderProps = {
   pressedMarkerStyle: View.propTypes.style
 };
 
-var Slider = React.createClass({
+var Slider = createReactClass({
 
   propTypes: sliderProps,
 

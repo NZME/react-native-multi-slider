@@ -3,13 +3,11 @@
 var React = require('react');
 var ReactNative = require('react-native');
 var {
-  PropTypes
-} = React;
-var {
   View
 } = ReactNative;
-
-var BasicMarker = React.createClass({
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class'
+var BasicMarker = createReactClass({
 
   propTypes: {
     pressed: PropTypes.bool,

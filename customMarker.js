@@ -3,14 +3,13 @@
 var React = require('react');
 var ReactNative = require('react-native');
 var {
-  PropTypes
-} = React;
-var {
   StyleSheet,
   Image
 } = ReactNative;
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class'
 
-var CustomMarker = React.createClass({
+var CustomMarker = createReactClass({
 
   propTypes: {
     pressed: PropTypes.bool,
