@@ -3,7 +3,8 @@
 var React = require('react');
 var ReactNative = require('react-native');
 var {
-  View
+  View,
+  ViewPropTypes,
 } = ReactNative;
 import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class'
@@ -11,8 +12,8 @@ var BasicMarker = createReactClass({
 
   propTypes: {
     pressed: PropTypes.bool,
-    pressedMarkerStyle: View.propTypes.style,
-    markerStyle: View.propTypes.style
+    pressedMarkerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+    markerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style
   },
 
   render: function () {
