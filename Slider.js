@@ -41,7 +41,11 @@ var sliderProps = {
   selectedStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
   unselectedStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
   markerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
-  pressedMarkerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style
+  pressedMarkerStyle: ViewPropTypes ? ViewPropTypes.style : View.propTypes.style,
+  labelMarkerOne: PropTypes.string,
+  labelMarkerTwo: PropTypes.string,
+  labelMarkerOneStyle: Text.propTypes.style,
+  labelMarkerTwoStyle: Text.propTypes.style,
 };
 
 var Slider = createReactClass({
@@ -204,7 +208,7 @@ var Slider = createReactClass({
 
   render() {
       var {positionOne, positionTwo} = this.state;
-      var {selectedStyle, unselectedStyle, sliderLength} = this.props;
+      var {selectedStyle, unselectedStyle, sliderLength, labelMarkerOne, labelMarkerTwo, labelMarkerOneStyle, labelMarkerTwoStyle} = this.props;
       var twoMarkers = positionTwo;
 
       var fixedPositionOne = Math.floor(positionOne / this.stepLength) * this.stepLength;
@@ -246,6 +250,7 @@ var Slider = createReactClass({
                 markerStyle={this.props.markerStyle}
                 pressedMarkerStyle={this.props.pressedMarkerStyle}
                 />
+              { labelMarkerOne && <Text style={[styles.label, labelMarkerOneStyle]}>{labelMarkerOne}</Text> }
             </View>
 
             { twoMarkers && (positionOne !== this.props.sliderLength) && (
@@ -260,6 +265,7 @@ var Slider = createReactClass({
                   markerStyle={this.props.markerStyle}
                   pressedMarkerStyle={this.props.pressedMarkerStyle}
                   />
+                { labelMarkerTwo && <Text style={[styles.label, labelMarkerTwoStyle]}>{labelMarkerTwo}</Text> }
               </View>
             ) }
 
@@ -286,5 +292,12 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent'
-  }
+  },
+  label: {
+    position: 'absolute',
+    bottom: -15,
+    width: 45,
+    alignSelf: 'center',
+    textAlign: 'center',
+  },
 });
