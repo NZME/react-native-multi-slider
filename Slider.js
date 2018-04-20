@@ -7,7 +7,8 @@ var {
   PanResponder,
   View,
   ViewPropTypes,
-  TouchableHighlight
+  TouchableHighlight,
+  Text,
 } = ReactNative;
 import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class'
