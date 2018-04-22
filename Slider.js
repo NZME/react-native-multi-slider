@@ -47,6 +47,8 @@ var sliderProps = {
   labelMarkerTwo: PropTypes.string,
   labelMarkerOneStyle: Text.propTypes.style,
   labelMarkerTwoStyle: Text.propTypes.style,
+
+  disabled: PropTypes.bool,
 };
 
 var Slider = createReactClass({
@@ -209,7 +211,7 @@ var Slider = createReactClass({
 
   render() {
       var {positionOne, positionTwo} = this.state;
-      var {selectedStyle, unselectedStyle, sliderLength, labelMarkerOne, labelMarkerTwo, labelMarkerOneStyle, labelMarkerTwoStyle} = this.props;
+      var {selectedStyle, unselectedStyle, sliderLength, labelMarkerOne, labelMarkerTwo, labelMarkerOneStyle, labelMarkerTwoStyle, disabled} = this.props;
       var twoMarkers = positionTwo;
 
       var fixedPositionOne = Math.floor(positionOne / this.stepLength) * this.stepLength;
@@ -229,9 +231,9 @@ var Slider = createReactClass({
         width: width,
         borderRadius: borderRadius || 0
       };
-
       return (
         <View style={[styles.container, this.props.containerStyle]}>
+          {disabled && <View style={styles.disabledBlock}></View>}
           <View style={[styles.fullTrack, { width: sliderLength }]}>
             <View style={[this.props.trackStyle, styles.track, trackOneStyle, { width: trackOneLength }]} />
             <View style={[this.props.trackStyle, styles.track, trackTwoStyle, { width: trackTwoLength }]} />
@@ -301,4 +303,13 @@ var styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
   },
+  disabledBlock: {
+    zIndex: 1,
+    backgroundColor: 'rgba(255,255,255,0.75)',
+    position: 'absolute',
+    top: -15,
+    left: 0,
+    right: 0,
+    bottom: -15,
+  }
 });
